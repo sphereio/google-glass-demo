@@ -3,6 +3,8 @@
 
     <string name="app_name">SphereGlass</string>
     <string name="title_activity_main">Sphere</string>
+    <string name="title_activity_alt">Dog</string>
     <string name="hello_world">Hello world!</string>
+    <string name = "tap_to_set">Tap to set</string>
 
 </resources>
