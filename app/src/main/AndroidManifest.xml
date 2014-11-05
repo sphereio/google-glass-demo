@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sphere.io.glass" >
+<manifest
+    package = "com.sphere.io.glass"
+    xmlns:android = "http://schemas.android.com/apk/res/android">
+
+    <!-- For free-style voice trigger and voice menus. -->
+    <uses-permission android:name = "com.google.android.glass.permission.DEVELOPMENT" />
 
     <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:allowBackup = "true"
+        android:icon = "@drawable/ic_launcher"
+        android:label = "@string/app_name">
         <activity
-            android:name=".MainActivity"
-            android:icon="@drawable/ic_glass_logo"
-            android:label="@string/title_activity_main" >
+            android:name = ".MainActivity"
+            android:icon = "@drawable/ic_glass_logo"
+            android:label = "@string/title_activity_main">
             <intent-filter>
-                <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+                <action android:name = "com.google.android.glass.action.VOICE_TRIGGER" />
             </intent-filter>
 
             <meta-data
-                android:name="com.google.android.glass.VoiceTrigger"
-                android:resource="@xml/voice_trigger" />
+                android:name = "com.google.android.glass.VoiceTrigger"
+                android:resource = "@xml/voice_trigger" />
         </activity>
+
+        <activity
+            android:name = ".AlternativesActivity"
+            android:icon = "@drawable/ic_glass_logo"
+            android:label = "@string/title_activity_alt"></activity>
+
+
     </application>
 
 </manifest>
