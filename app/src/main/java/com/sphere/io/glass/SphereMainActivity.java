@@ -48,7 +48,7 @@ public class SphereMainActivity extends Activity {
     private void buildView() {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         mCardScroller = new CardScrollView(this);
-        mCardScroller.setAdapter(new CardAdapter(createCards(this)));
+        mCardScroller.setAdapter(new CardAdapter(createCards()));
         mSlider = Slider.from(mCardScroller);
         setContentView(mCardScroller);
     }
@@ -70,7 +70,7 @@ public class SphereMainActivity extends Activity {
         animator.setDuration(MILLIS_DELAY).start();
     }
 
-    private List<CardBuilder> createCards(Context context) {
+    private List<CardBuilder> createCards() {
         ArrayList<CardBuilder> cards = new ArrayList<CardBuilder>();
         cards.add(NAVIGATION_QRCODE, new CardBuilder(this, CardBuilder.Layout.MENU)
                 .setText(R.string.app_title).setIcon(R.drawable.icon_logo));

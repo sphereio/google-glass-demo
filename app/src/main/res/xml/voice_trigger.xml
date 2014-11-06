@@ -1,2 +1,2 @@
-<!-- For more information about voice trigger, check out: https://developers.google.com/glass/develop/gdk/starting-glassware -->
-<trigger command="START_SHOPPING" />
+<?xml version="1.0" encoding="utf-8"?>
+<trigger keyword="@string/keyword_start_shopping" />

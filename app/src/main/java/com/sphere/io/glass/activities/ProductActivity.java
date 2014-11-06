@@ -73,6 +73,6 @@ public class ProductActivity extends Activity {
     }
 
     private void displayConfirmationCard(){
-        //TODO displays a livecard confirming the purchase
+        //TODO displays a card confirming the purchase
     }
 }
