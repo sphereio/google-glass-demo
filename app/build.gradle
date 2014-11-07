@@ -27,5 +27,7 @@ android {
 }
 
 dependencies {
+
+    compile 'com.squareup.retrofit:retrofit:1.7.1'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
