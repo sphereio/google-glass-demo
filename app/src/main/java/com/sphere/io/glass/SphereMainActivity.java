@@ -9,7 +9,9 @@ import com.google.android.glass.widget.CardScrollView;
 import com.google.android.glass.widget.Slider;
 import com.sphere.io.glass.activities.LoadingActivity;
 import com.sphere.io.glass.activities.ProductActivity;
+import com.sphere.io.glass.api.SphereApiCaller;
 import com.sphere.io.glass.card.CardAdapter;
+import com.sphere.io.glass.model.Session;
 import com.sphere.io.glass.utils.Constants;
 
 import android.animation.Animator;
@@ -31,6 +33,8 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.greenrobot.event.EventBus;
+
 public class SphereMainActivity extends Activity {
     private static final int NAVIGATION_QRCODE = 0;
     private CardScrollView mCardScroller;
@@ -43,6 +47,7 @@ public class SphereMainActivity extends Activity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         buildView();
+        SphereApiCaller.getInstance(this).getSession();
     }
 
     private void buildView() {
@@ -56,6 +61,7 @@ public class SphereMainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        EventBus.getDefault().register(this);
         mCardScroller.activate();
         mDeterminate = mSlider.startDeterminate(MAX_VALUE, 0);
         ObjectAnimator animator = ObjectAnimator.ofFloat(mDeterminate,
@@ -68,6 +74,16 @@ public class SphereMainActivity extends Activity {
             }
         });
         animator.setDuration(MILLIS_DELAY).start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+
+    public void onEvent(Session session){
+        Log.e("YEYEYEYEYE",session.getToken());
     }
 
     private List<CardBuilder> createCards() {
