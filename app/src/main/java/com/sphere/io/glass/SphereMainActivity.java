@@ -13,6 +13,7 @@ import com.sphere.io.glass.api.SphereApiCaller;
 import com.sphere.io.glass.card.CardAdapter;
 import com.sphere.io.glass.model.Session;
 import com.sphere.io.glass.utils.Constants;
+import com.sphere.io.glass.utils.SpherePreferenceManager;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -39,9 +40,10 @@ public class SphereMainActivity extends Activity {
     private static final int NAVIGATION_QRCODE = 0;
     private CardScrollView mCardScroller;
     private Slider.Determinate mDeterminate;
-    private Slider mSlider;
+    private Slider.Indeterminate mSlider;
     private static final int MILLIS_DELAY = 3000;
     private static final int MAX_VALUE = 500;
+    private static String TAG = SphereMainActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -54,7 +56,6 @@ public class SphereMainActivity extends Activity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         mCardScroller = new CardScrollView(this);
         mCardScroller.setAdapter(new CardAdapter(createCards()));
-        mSlider = Slider.from(mCardScroller);
         setContentView(mCardScroller);
     }
 
@@ -63,17 +64,7 @@ public class SphereMainActivity extends Activity {
         super.onResume();
         EventBus.getDefault().register(this);
         mCardScroller.activate();
-        mDeterminate = mSlider.startDeterminate(MAX_VALUE, 0);
-        ObjectAnimator animator = ObjectAnimator.ofFloat(mDeterminate,
-                "position", 0, MAX_VALUE);
-        animator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                startActivity(CaptureActivity.newIntent(SphereMainActivity.this));
-                finish();
-            }
-        });
-        animator.setDuration(MILLIS_DELAY).start();
+        mSlider = Slider.from(mCardScroller).startIndeterminate();
     }
 
     @Override
@@ -83,7 +74,12 @@ public class SphereMainActivity extends Activity {
     }
 
     public void onEvent(Session session){
-        Log.e("YEYEYEYEYE",session.getToken());
+        SpherePreferenceManager.getInstance(this).setSession(session);
+        Log.e(TAG, "SESSION WITH TOKEN " + session.getToken() + " STORED");
+        mSlider.hide();
+        startActivity(CaptureActivity.newIntent(SphereMainActivity.this));
+        finish();
+
     }
 
     private List<CardBuilder> createCards() {
