@@ -51,6 +51,7 @@ public class SphereApiCaller {
                         if (authSession == null) {
                             request.addHeader(KEY_AUTHORIZATION, AUTHORIZATION);
                         } else {
+                            //Technically never reached, must be checked
                             generateRestAdapter(context);
                         }
                     }
