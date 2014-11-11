@@ -77,7 +77,6 @@ public class SphereMainActivity extends Activity {
         mSlider.hide();
         startActivity(CaptureActivity.newIntent(SphereMainActivity.this));
         finish();
-
     }
 
     private List<CardBuilder> createCards() {

@@ -69,9 +69,9 @@ public class SphereApiCaller {
         service.getSession(GRANT_TYPE,SCOPE,new GenericApiCallback<Session>());
     }
 
-    public void getProductBySKU(){
+    public void getProductBySKU(String productSKU){
         SphereService service = mRestAdapter.create(SphereService.class);
-        service.getProductBySKU(String productSKU,new GenericApiCallback<Session>());
+        service.getProductBySKU(productSKU,new GenericApiCallback<Session>());
 
     }
 
