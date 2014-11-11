@@ -26,7 +26,6 @@ public class Product {
         this.productID = productID;
     }
 
-
     public Name getName() {
         return name;
     }

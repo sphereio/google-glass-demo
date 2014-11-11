@@ -8,6 +8,9 @@ import android.view.WindowManager;
 import com.google.android.glass.touchpad.Gesture;
 import com.google.android.glass.touchpad.GestureDetector;
 import com.google.android.glass.widget.CardBuilder;
+import com.sphere.io.glass.api.SphereApiCaller;
+import com.sphere.io.glass.model.Product;
+import com.sphere.io.glass.model.ProductResponseWrapper;
 import com.sphere.io.glass.utils.Constants;
 
 /**
@@ -25,7 +28,17 @@ public class ProductActivity extends Activity {
     }
     private void buildView() {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        setContentView(populateCard(recoverData()).getView());
+        //setContentView(populateCard(recoverData()).getView());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SphereApiCaller.getInstance(this).getProductBySKU(recoverData());
+    }
+
+    public void onEvent(ProductResponseWrapper productResponseWrapper){
+        setContentView(populateCard(productResponseWrapper.getProducts().get(0).getProductID()).getView());
     }
 
     private CardBuilder populateCard(String text) {

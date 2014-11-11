@@ -7,6 +7,8 @@ import android.preference.PreferenceManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sphere.io.glass.R;
+import com.sphere.io.glass.model.Product;
+import com.sphere.io.glass.model.ProductResponseWrapper;
 import com.sphere.io.glass.model.Session;
 import com.sphere.io.glass.utils.SpherePreferenceManager;
 
@@ -45,11 +47,13 @@ public class SphereApiCaller {
                 .setRequestInterceptor(new RequestInterceptor() {
                     @Override
                     public void intercept(RequestFacade request) {
-                        String authToken = SpherePreferenceManager.getInstance(context).getSession().getToken();
-                        if (authToken != null){
+                        Session authSession = SpherePreferenceManager.getInstance(context).getSession();
+                        if (authSession == null) {
                             request.addHeader(KEY_AUTHORIZATION, AUTHORIZATION);
-                        }else{
-                            request.addHeader(KEY_AUTHORIZATION, new  StringBuffer(AUTHORIZATION_BEARER).append(authToken).toString());
+                        } else {
+                            request.addHeader(KEY_AUTHORIZATION, new StringBuffer(AUTHORIZATION_BEARER)
+                                    .append(authSession.getToken()).toString());
+
                         }
                     }
                 })
@@ -71,7 +75,8 @@ public class SphereApiCaller {
 
     public void getProductBySKU(String productSKU){
         SphereService service = mRestAdapter.create(SphereService.class);
-        service.getProductBySKU(productSKU,new GenericApiCallback<Session>());
+        String key = new StringBuffer("masterVariant(sku=\"").append(productSKU).append("\")").toString();
+        service.getProductBySKU(key, new GenericApiCallback<ProductResponseWrapper>());
 
     }
 

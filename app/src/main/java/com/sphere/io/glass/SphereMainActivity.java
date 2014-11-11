@@ -45,6 +45,9 @@ public class SphereMainActivity extends Activity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        //Clear the stored data before leaving the app,
+        // TODO should check if it fits the app workflow
+        SpherePreferenceManager.getInstance(this).clear();
         buildView();
     }
 
