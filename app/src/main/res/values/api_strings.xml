@@ -3,5 +3,6 @@
 
 <resources>
     <string name="sphere_endpoint">https://auth.sphere.io/</string>
+    <string name="sphere_api_endpoint">https://api.sphere.io/</string>
 
 </resources>
