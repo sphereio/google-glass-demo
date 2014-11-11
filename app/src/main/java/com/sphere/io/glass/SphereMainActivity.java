@@ -39,17 +39,13 @@ import de.greenrobot.event.EventBus;
 public class SphereMainActivity extends Activity {
     private static final int NAVIGATION_QRCODE = 0;
     private CardScrollView mCardScroller;
-    private Slider.Determinate mDeterminate;
     private Slider.Indeterminate mSlider;
-    private static final int MILLIS_DELAY = 3000;
-    private static final int MAX_VALUE = 500;
     private static String TAG = SphereMainActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         buildView();
-        SphereApiCaller.getInstance(this).getSession();
     }
 
     private void buildView() {
@@ -65,6 +61,8 @@ public class SphereMainActivity extends Activity {
         EventBus.getDefault().register(this);
         mCardScroller.activate();
         mSlider = Slider.from(mCardScroller).startIndeterminate();
+        SphereApiCaller.getInstance(this).getSession();
+
     }
 
     @Override

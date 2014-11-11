@@ -6,6 +6,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
+import retrofit.http.GET;
 import retrofit.http.Header;
 import retrofit.http.POST;
 
@@ -20,5 +21,8 @@ public interface SphereService {
                     @Field("grant_type") String grantType,
                     @Field("scope") String scope,
                     Callback<Session> session) throws RetrofitError;
+
+    @GET("/google-glass-demo/product-projections?where=masterVariant(sku%20%3D%20\"{productSKU}\")")
+    void getProductBySKU();
 
 }

@@ -47,6 +47,7 @@ import com.google.zxing.client.android.camera.CameraManager;
 import com.sphere.io.glass.R;
 import com.sphere.io.glass.activities.ProductActivity;
 import com.sphere.io.glass.utils.Constants;
+import com.sphere.io.glass.utils.SpherePreferenceManager;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -177,6 +178,9 @@ public final class CaptureActivity extends BaseGlassActivity implements
     @Override
     protected void onDestroy() {
         mInactivityTimer.shutdown();
+        //Clear the stored data before leaving the app,
+        // TODO should check if it fits the app workflow
+        SpherePreferenceManager.getInstance(this).clear();
         super.onDestroy();
     }
 
@@ -363,4 +367,6 @@ public final class CaptureActivity extends BaseGlassActivity implements
     public void drawViewfinder() {
         mViewfinderView.drawViewfinder();
     }
+
+
 }
