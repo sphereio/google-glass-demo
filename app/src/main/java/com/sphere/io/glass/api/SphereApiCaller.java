@@ -32,7 +32,6 @@ public class SphereApiCaller {
     private static final String PERMISSIONS = "manage_project:google-glass-demo";
 
 
-
     /**
      * Empty constructor.
      */
@@ -67,11 +66,12 @@ public class SphereApiCaller {
 
     public void getSession() {
         SphereService service = mRestAdapter.create(SphereService.class);
-
-        service.getSession(AUTHORIZATION,GRANT_TYPE,SCOPE,new GenericApiCallback<Session>());
+        service.getSession(GRANT_TYPE,SCOPE,new GenericApiCallback<Session>());
     }
 
     public void getProductBySKU(){
+        SphereService service = mRestAdapter.create(SphereService.class);
+        service.getProductBySKU(String productSKU,new GenericApiCallback<Session>());
 
     }
 
