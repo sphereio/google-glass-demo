@@ -8,13 +8,13 @@ import com.google.gson.annotations.SerializedName;
 public class Image {
 
     @SerializedName("url")
-    private int imageURL;
+    private String imageURL;
 
-    public int getImageURL() {
+    public String getImageURL() {
         return imageURL;
     }
 
-    public void setImageURL(int imageURL) {
+    public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
 }

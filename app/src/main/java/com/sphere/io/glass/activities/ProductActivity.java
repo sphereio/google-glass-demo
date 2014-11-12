@@ -2,6 +2,7 @@ package com.sphere.io.glass.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.WindowManager;
 
@@ -9,9 +10,10 @@ import com.google.android.glass.touchpad.Gesture;
 import com.google.android.glass.touchpad.GestureDetector;
 import com.google.android.glass.widget.CardBuilder;
 import com.sphere.io.glass.api.SphereApiCaller;
-import com.sphere.io.glass.model.Product;
 import com.sphere.io.glass.model.ProductResponseWrapper;
 import com.sphere.io.glass.utils.Constants;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Francisco Villalba on 6/11/14.
@@ -19,10 +21,13 @@ import com.sphere.io.glass.utils.Constants;
 public class ProductActivity extends Activity {
 
     private GestureDetector mGestureDetector;
+    private final static String TAG = ProductActivity.class.getName();
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+        Log.e(TAG,"CREATED");
+        EventBus.getDefault().register(this);
         buildView();
         createGestureDetector();
     }
@@ -34,11 +39,20 @@ public class ProductActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        Log.e(TAG,"RESUMED");
         SphereApiCaller.getInstance(this).getProductBySKU(recoverData());
     }
 
+    @Override
+    protected void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
+    }
+
     public void onEvent(ProductResponseWrapper productResponseWrapper){
+        Log.e(TAG, productResponseWrapper.getProducts().get(0).getProductID());
         setContentView(populateCard(productResponseWrapper.getProducts().get(0).getProductID()).getView());
+        Log.e(TAG, productResponseWrapper.getProducts().get(0).getProductID());
     }
 
     private CardBuilder populateCard(String text) {

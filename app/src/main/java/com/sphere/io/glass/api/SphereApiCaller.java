@@ -1,13 +1,10 @@
 package com.sphere.io.glass.api;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sphere.io.glass.R;
-import com.sphere.io.glass.model.Product;
 import com.sphere.io.glass.model.ProductResponseWrapper;
 import com.sphere.io.glass.model.Session;
 import com.sphere.io.glass.utils.SpherePreferenceManager;
@@ -22,7 +19,7 @@ import retrofit.converter.GsonConverter;
 public class SphereApiCaller {
 
     private  static RestAdapter mRestAdapter;
-    private static  SphereApiCaller mSphereApiCaller;
+    private static SphereApiCaller mSphereApiCaller;
     //KNOWLEDGE PURPOSES
     private static final String CLIENT_ID = "654GYqPJccG9X3KCrKImwLyO";
     private static final String CLIENT_SECRET = "bAS3tW-PfDpNbxlqSIiUJ7H-XDOo6BIN";
@@ -32,7 +29,6 @@ public class SphereApiCaller {
     private static final String GRANT_TYPE = "client_credentials";
     private static final String SCOPE = "manage_project:google-glass-demo";
     private static final String PERMISSIONS = "manage_project:google-glass-demo";
-
 
     /**
      * Empty constructor.
@@ -61,8 +57,6 @@ public class SphereApiCaller {
     }
 
     private static void generateRestAdapter(final Context context){
-        Gson gson = new GsonBuilder()
-                .create();
         mRestAdapter = new RestAdapter.Builder().setLogLevel(RestAdapter.LogLevel.FULL)
         .setEndpoint(context.getString(R.string.sphere_api_endpoint))
 
@@ -75,7 +69,6 @@ public class SphereApiCaller {
 
                     }
                 })
-                .setConverter(new GsonConverter(gson))
                 .build();
     }
 
@@ -85,6 +78,7 @@ public class SphereApiCaller {
         }
         Session authSession = SpherePreferenceManager.getInstance(context).getSession();
         if (authSession != null) {
+            mSphereApiCaller = new SphereApiCaller(context);
             generateRestAdapter(context);
         }
         return mSphereApiCaller;
