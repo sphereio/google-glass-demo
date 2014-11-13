@@ -3,5 +3,7 @@
 <resources>
     <string name="app_title">SPHERE.IO</string>
     <string name="keyword_start_shopping">start shopping</string>
+    <string name="product_price">Price: %.02f €</string>
+    <string name="taps_to_buy">2 taps to buy</string>
 
 </resources>

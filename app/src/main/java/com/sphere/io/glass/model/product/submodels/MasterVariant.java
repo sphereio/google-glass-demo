@@ -9,8 +9,9 @@ import java.util.ArrayList;
  */
 public class MasterVariant {
 
-    @SerializedName("images")
     private ArrayList<Image> images;
+
+    private ArrayList<Value> prices;
 
     public ArrayList<Image> getImages() {
         return images;
@@ -18,5 +19,13 @@ public class MasterVariant {
 
     public void setImages(ArrayList<Image> images) {
         this.images = images;
+    }
+
+    public ArrayList<Value> getPrices() {
+        return prices;
+    }
+
+    public void setPrices(ArrayList<Value> prices) {
+        this.prices = prices;
     }
 }

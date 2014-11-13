@@ -1,6 +1,7 @@
 package com.sphere.io.glass.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.sphere.io.glass.model.product.submodels.Description;
 import com.sphere.io.glass.model.product.submodels.MasterVariant;
 import com.sphere.io.glass.model.product.submodels.Name;
 
@@ -17,6 +18,8 @@ public class Product {
 
     @SerializedName("masterVariant")
     private MasterVariant masterVariant;
+
+    private Description description;
 
     public String getProductID() {
         return productID;
@@ -36,5 +39,14 @@ public class Product {
 
     public MasterVariant getMasterVariant() {
         return masterVariant;
+    }
+
+
+    public Description getDescription() {
+        return description;
+    }
+
+    public void setDescription(Description description) {
+        this.description = description;
     }
 }
