@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * Created by Francisco Villalba on 4/11/14.
  */
-public class LoadingActivity extends Activity  {
+public class ConfirmationActivity extends Activity  {
 
     private static final int INDETERMINATE = 0;
     private CardScrollView mCardScroller;
@@ -42,7 +42,6 @@ public class LoadingActivity extends Activity  {
         super.onCreate(bundle);
 
         // Ensure screen stays on during demo.
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         mCardScroller = new CardScrollView(this);
         mCardScroller.setAdapter(new CardAdapter(createCards(this)));
@@ -71,9 +70,6 @@ public class LoadingActivity extends Activity  {
 
     @Override
     public void onBackPressed() {
-        // If the Grace Period is running, cancel it instead of finishing the Activity.
-       // displaySlider();
-       // super.onBackPressed();
     }
 
     @Override
@@ -103,7 +99,7 @@ public class LoadingActivity extends Activity  {
         ArrayList<CardBuilder> cards = new ArrayList<CardBuilder>();
 
         cards.add(INDETERMINATE, new CardBuilder(context, CardBuilder.Layout.MENU)
-                .setText(getResources().getString(R.string.dialog_loading)));
+                .setText(getResources().getString(R.string.progress_confirm)));
         return cards;
     }
 

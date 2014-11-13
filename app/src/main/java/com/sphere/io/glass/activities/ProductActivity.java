@@ -2,6 +2,7 @@ package com.sphere.io.glass.activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 
+import com.github.barcodeeye.scan.CaptureActivity;
 import com.google.android.glass.app.Card;
 import com.google.android.glass.timeline.LiveCard;
 import com.google.android.glass.touchpad.Gesture;
@@ -66,7 +68,6 @@ public class ProductActivity extends Activity {
         Log.e(TAG, productResponseWrapper.getProducts().get(0).getProductID());
         populateCard(productResponseWrapper);
         mSlider.hide();
-
     }
 
     private void  populateCard(ProductResponseWrapper productResponseWrapper) {
@@ -79,7 +80,7 @@ public class ProductActivity extends Activity {
         TextView mPriceTv = (TextView)view.findViewById(R.id.product_layout_tv_price);
         mNameTv.setText(product.getName().getName());
         mdescriptionTv.setText(product.getDescription().getText());
-        mPriceTv.setText(getString(R.string.product_price,product.getMasterVariant().getPrices().get(0).getAmount()));
+        mPriceTv.setText(getString(R.string.product_price, product.getMasterVariant().getPrices().get(0).getAmount()));
         Picasso.with(this).load(product.getMasterVariant().getImages().get(0).getImageURL()).into(mImageIv);
     }
 
@@ -97,7 +98,7 @@ public class ProductActivity extends Activity {
         mGestureDetector.setBaseListener(new GestureDetector.BaseListener() {
             @Override
             public boolean onGesture(Gesture gesture) {
-                if (gesture == Gesture.TWO_TAP) {
+                if (gesture == Gesture.LONG_PRESS) {
                     displayConfirmationCard();
                     return true;
                 }
@@ -115,6 +116,9 @@ public class ProductActivity extends Activity {
     }
 
     private void displayConfirmationCard(){
-        //TODO displays a card confirming the purchase
+        Intent i = new Intent(this, ConfirmationActivity.class);
+        //i.putExtra(Constants.KEY_SKU,rawResult.toString());
+        startActivity(i);
+        finish();
     }
 }
