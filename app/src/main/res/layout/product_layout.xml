@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/product_layout_iv_item"
+        android:layout_width="@dimen/glass_card_left_column_width"
+        android:background="@color/encode_view"
+        android:layout_height="match_parent"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="@dimen/glass_card_margin"
+        android:layout_marginRight="@dimen/glass_card_margin"
+        android:layout_marginTop="@dimen/glass_card_medium_margin"
+        android:layout_toRightOf="@+id/product_layout_iv_item"
+        tools:ignore="UselessLeaf"
+        >
+
+        <TextView
+            android:id="@+id/product_layout_tv_name"
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
+           />
+
+        <TextView
+            android:id="@+id/product_layout_tv_price"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/product_layout_tv_name"
+            android:layout_height="wrap_content"
+         />
+
+        <TextView
+            android:id="@+id/product_layout_tv_desc"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/product_layout_tv_price"
+            android:layout_height="wrap_content"
+        />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textSize="15dp"
+            android:text="@string/taps_to_buy"/>
+    </RelativeLayout>
+</RelativeLayout>
