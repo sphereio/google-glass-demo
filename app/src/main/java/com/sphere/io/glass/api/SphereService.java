@@ -1,5 +1,6 @@
 package com.sphere.io.glass.api;
 
+import com.sphere.io.glass.model.Cart;
 import com.sphere.io.glass.model.Product;
 import com.sphere.io.glass.model.ProductResponseWrapper;
 import com.sphere.io.glass.model.Session;
@@ -31,4 +32,6 @@ public interface SphereService {
                          Callback<ProductResponseWrapper> productResponseWrapper) throws RetrofitError;
 
 
+    @POST("/google-glass-demo/carts")
+    void createCart(Callback<Cart> cart) throws RetrofitError;
 }
