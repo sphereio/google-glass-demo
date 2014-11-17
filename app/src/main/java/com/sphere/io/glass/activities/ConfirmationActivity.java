@@ -22,7 +22,9 @@ import com.google.android.glass.widget.CardBuilder;
 import com.google.android.glass.widget.CardScrollView;
 import com.google.android.glass.widget.Slider;
 import com.sphere.io.glass.R;
+import com.sphere.io.glass.api.SphereApiCaller;
 import com.sphere.io.glass.card.CardAdapter;
+import com.sphere.io.glass.model.Cart;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,14 +55,12 @@ public class ConfirmationActivity extends Activity  {
                 return true;
             }
         });
-
         mCardScroller.setOnDragListener(new View.OnDragListener() {
             @Override
             public boolean onDrag(View view, DragEvent dragEvent) {
                 return true;
             }
         });
-
     }
 
     @Override
@@ -77,6 +77,13 @@ public class ConfirmationActivity extends Activity  {
         super.onResume();
         mCardScroller.activate();
         displaySlider();
+        SphereApiCaller.getInstance(this).createCart();
+    }
+
+    public void onEvent(Cart cart){
+
+
+
     }
 
     private void displaySlider() {

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sphere.io.glass.R;
+import com.sphere.io.glass.model.Cart;
 import com.sphere.io.glass.model.ProductResponseWrapper;
 import com.sphere.io.glass.model.Session;
 import com.sphere.io.glass.utils.SpherePreferenceManager;
@@ -29,6 +30,7 @@ public class SphereApiCaller {
     private static final String GRANT_TYPE = "client_credentials";
     private static final String SCOPE = "manage_project:google-glass-demo";
     private static final String PERMISSIONS = "manage_project:google-glass-demo";
+    private static final String CURRENCY = "EUR";
 
     /**
      * Empty constructor.
@@ -93,8 +95,13 @@ public class SphereApiCaller {
         SphereService service = mRestAdapter.create(SphereService.class);
         String key = new StringBuffer("masterVariant(sku=\"").append(productSKU).append("\")").toString();
         service.getProductBySKU(key, new GenericApiCallback<ProductResponseWrapper>());
-
     }
+
+    public void createCart(){
+        SphereService service = mRestAdapter.create(SphereService.class);
+        service.createCart(CURRENCY, new GenericApiCallback<Cart>());
+    }
+
 
 
 }

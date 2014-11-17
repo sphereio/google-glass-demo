@@ -21,8 +21,7 @@ public class GenericApiCallback<T> implements Callback<T> {
 
     @Override
     public void failure(RetrofitError error) {
-        Log.e(TAG, "FAILURE "+error.toString() );
-
+        EventBus.getDefault().post(error);
         /*Utils.triggerError(error);*/
     }
 
