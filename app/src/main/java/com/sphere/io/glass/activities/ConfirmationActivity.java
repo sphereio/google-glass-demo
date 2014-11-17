@@ -1,30 +1,26 @@
 package com.sphere.io.glass.activities;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
-import android.media.AudioManager;
 import android.os.Bundle;
 import android.view.DragEvent;
-import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 
-import com.google.android.glass.app.Card;
-import com.google.android.glass.media.Sounds;
-import com.google.android.glass.touchpad.Gesture;
 import com.google.android.glass.widget.CardBuilder;
 import com.google.android.glass.widget.CardScrollView;
 import com.google.android.glass.widget.Slider;
 import com.sphere.io.glass.R;
 import com.sphere.io.glass.api.SphereApiCaller;
 import com.sphere.io.glass.card.CardAdapter;
+import com.sphere.io.glass.model.Action;
+import com.sphere.io.glass.model.LineItem;
 import com.sphere.io.glass.model.Cart;
+import com.sphere.io.glass.model.Product;
+import com.sphere.io.glass.model.ShippingAdress;
+import com.sphere.io.glass.model.UpdateAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,11 +34,13 @@ public class ConfirmationActivity extends Activity  {
     private CardScrollView mCardScroller;
     private Slider mSlider;
     private Slider.Indeterminate mIndeterminate;
+    private boolean cartCreated;
+    private Product mProduct;
+
 
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-
         // Ensure screen stays on during demo.
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         mCardScroller = new CardScrollView(this);
@@ -81,8 +79,30 @@ public class ConfirmationActivity extends Activity  {
     }
 
     public void onEvent(Cart cart){
+        if (!cartCreated){
+            cartCreated = true;
+            addItemToCart(cart);
+        }else{
+            payOrder();
+        }
+    }
 
+    private void addItemToCart(Cart cart){
+        UpdateAction updateAction = new UpdateAction();
+        updateAction.setVersion(cart.getVersion());
+        final LineItem addProduct = new LineItem();
+        addProduct.setQuantity(1);
+        addProduct.setVariantId(1);
+        addProduct.setProductId(mProduct.getProductID());
+        addProduct.setAction("addLineItem");
+        final ShippingAdress addShipingAdress = new ShippingAdress();
+        addShipingAdress.setAction("setShippingAddress");
+        addShipingAdress.setFirstName("dummy");
+        updateAction.setActions(new ArrayList<Action>(){{add(addProduct);add(addShipingAdress);}});
+        SphereApiCaller.getInstance(this).addItemToCart(cart.getId(),updateAction);
+    }
 
+    private void payOrder(){
 
     }
 
@@ -109,6 +129,4 @@ public class ConfirmationActivity extends Activity  {
                 .setText(getResources().getString(R.string.progress_confirm)));
         return cards;
     }
-
-
 }

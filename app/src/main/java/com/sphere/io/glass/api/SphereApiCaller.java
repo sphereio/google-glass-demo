@@ -8,6 +8,7 @@ import com.sphere.io.glass.R;
 import com.sphere.io.glass.model.Cart;
 import com.sphere.io.glass.model.ProductResponseWrapper;
 import com.sphere.io.glass.model.Session;
+import com.sphere.io.glass.model.UpdateAction;
 import com.sphere.io.glass.utils.SpherePreferenceManager;
 
 import retrofit.RequestInterceptor;
@@ -101,6 +102,12 @@ public class SphereApiCaller {
         SphereService service = mRestAdapter.create(SphereService.class);
         service.createCart(CURRENCY, new GenericApiCallback<Cart>());
     }
+
+    public void addItemToCart(String cartId, UpdateAction updateAction){
+        SphereService service = mRestAdapter.create(SphereService.class);
+        service.addItemToCart(cartId, updateAction, new GenericApiCallback<Cart>());
+    }
+
 
 
 

@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class UpdateAction {
         private int version;
+    private ArrayList<Action> actions;
 
     public int getVersion() {
         return version;
@@ -16,6 +17,7 @@ public class UpdateAction {
         this.version = version;
     }
 
+
     public ArrayList<Action> getActions() {
         return actions;
     }
@@ -23,7 +25,4 @@ public class UpdateAction {
     public void setActions(ArrayList<Action> actions) {
         this.actions = actions;
     }
-
-    private ArrayList<Action> actions;
-
 }

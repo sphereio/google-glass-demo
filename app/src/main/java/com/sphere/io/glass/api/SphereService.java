@@ -4,10 +4,12 @@ import com.sphere.io.glass.model.Cart;
 import com.sphere.io.glass.model.Product;
 import com.sphere.io.glass.model.ProductResponseWrapper;
 import com.sphere.io.glass.model.Session;
+import com.sphere.io.glass.model.UpdateAction;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import retrofit.http.Body;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
@@ -34,4 +36,7 @@ public interface SphereService {
 
     @POST("/google-glass-demo/carts")
     void createCart(@Field("currency") String currency, Callback<Cart> cart) throws RetrofitError;
+
+    @POST("/google-glass-demo/carts/{cartId}")
+    void addItemToCart(@Path("cartId") String cartId, @Body UpdateAction updateAction, Callback<Cart> cart) throws RetrofitError;
 }
