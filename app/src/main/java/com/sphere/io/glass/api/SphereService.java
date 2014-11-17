@@ -39,4 +39,8 @@ public interface SphereService {
 
     @POST("/google-glass-demo/carts/{cartId}")
     void addItemToCart(@Path("cartId") String cartId, @Body UpdateAction updateAction, Callback<Cart> cart) throws RetrofitError;
+
+    @POST("/google-glass-demo/orders")
+    void createOrderFromCart(@Field("id") String cartId,@Field("version") int version,@Field ("paymentState") String paymentState);
+
 }

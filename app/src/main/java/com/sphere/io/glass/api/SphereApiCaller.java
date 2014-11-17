@@ -108,6 +108,11 @@ public class SphereApiCaller {
         service.addItemToCart(cartId, updateAction, new GenericApiCallback<Cart>());
     }
 
+    public void createOrderFromCart(){
+        SphereService service = mRestAdapter.create(SphereService.class);
+
+    }
+
 
 
 
