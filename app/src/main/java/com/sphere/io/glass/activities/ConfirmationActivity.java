@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * Created by Francisco Villalba on 4/11/14.
  */
-public class ConfirmationActivity extends Activity  {
+public class ConfirmationActivity extends BaseActivity  {
 
     private static final int INDETERMINATE = 0;
     private CardScrollView mCardScroller;

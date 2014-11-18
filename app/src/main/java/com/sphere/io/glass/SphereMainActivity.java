@@ -4,6 +4,7 @@ import com.github.barcodeeye.scan.CaptureActivity;
 import com.google.android.glass.widget.CardBuilder;
 import com.google.android.glass.widget.CardScrollView;
 import com.google.android.glass.widget.Slider;
+import com.sphere.io.glass.activities.BaseActivity;
 import com.sphere.io.glass.api.SphereApiCaller;
 import com.sphere.io.glass.card.CardAdapter;
 import com.sphere.io.glass.model.Session;
@@ -19,7 +20,7 @@ import java.util.List;
 
 import de.greenrobot.event.EventBus;
 
-public class SphereMainActivity extends Activity {
+public class SphereMainActivity extends BaseActivity {
     private static final int NAVIGATION_QRCODE = 0;
     private CardScrollView mCardScroller;
     private Slider.Indeterminate mSlider;
@@ -44,17 +45,10 @@ public class SphereMainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        EventBus.getDefault().register(this);
         mCardScroller.activate();
         mSlider = Slider.from(mCardScroller).startIndeterminate();
         SphereApiCaller.getInstance(this).getSession();
 
-    }
-
-    @Override
-    protected void onDestroy() {
-        EventBus.getDefault().unregister(this);
-        super.onDestroy();
     }
 
     public void onEvent(Session session){

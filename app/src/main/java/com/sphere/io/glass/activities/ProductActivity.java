@@ -32,7 +32,7 @@ import de.greenrobot.event.EventBus;
 /**
  * Created by Francisco Villalba on 6/11/14.
  */
-public class ProductActivity extends Activity {
+public class ProductActivity extends BaseActivity {
 
     private GestureDetector mGestureDetector;
     private final static String TAG = ProductActivity.class.getName();
@@ -41,7 +41,6 @@ public class ProductActivity extends Activity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         Log.e(TAG,"CREATED");
-        EventBus.getDefault().register(this);
         buildView();
         createGestureDetector();
     }
@@ -56,12 +55,6 @@ public class ProductActivity extends Activity {
         Log.e(TAG,"RESUMED");
         mSlider = Slider.from(new CardBuilder(this, CardBuilder.Layout.COLUMNS).getView()).startIndeterminate();
         SphereApiCaller.getInstance(this).getProductBySKU(recoverData());
-    }
-
-    @Override
-    protected void onDestroy() {
-        EventBus.getDefault().unregister(this);
-        super.onDestroy();
     }
 
     public void onEvent(ProductResponseWrapper productResponseWrapper){
