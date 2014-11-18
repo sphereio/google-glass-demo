@@ -1,6 +1,7 @@
 package com.sphere.io.glass.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.glass.widget.CardBuilder;
@@ -27,11 +28,7 @@ public class BaseActivity extends Activity {
     }
 
     public void onEvent(RetrofitError retrofitError){
- /*       setContentView(new CardBuilder(this, CardBuilder.Layout.ALERT)
-                .setIcon(iconResId)
-                .setText(textResId)
-                .setFootnote(footnoteResId)
-                .getView());*/
+        startActivity(new Intent(this,AlertActivity.class));
     }
-    }
+
 }

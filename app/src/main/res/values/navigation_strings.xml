@@ -6,5 +6,6 @@
     <string name="product_price">Price: %.02f €</string>
     <string name="taps_to_buy">Long press to buy</string>
     <string name="progress_confirm">Purchase in progress...</string>
+    <string name="alert_text">Connecetion error has ocurred</string>
 
 </resources>
