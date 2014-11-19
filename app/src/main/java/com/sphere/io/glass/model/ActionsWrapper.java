@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Francisco Villalba on 14/11/14.
  */
-public class UpdateAction {
+public class ActionsWrapper {
         private int version;
     private ArrayList<Action> actions;
 

@@ -1,6 +1,5 @@
 package com.sphere.io.glass.activities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -16,11 +15,13 @@ import com.sphere.io.glass.R;
 import com.sphere.io.glass.api.SphereApiCaller;
 import com.sphere.io.glass.card.CardAdapter;
 import com.sphere.io.glass.model.Action;
+import com.sphere.io.glass.model.ActionsWrapper;
 import com.sphere.io.glass.model.LineItem;
 import com.sphere.io.glass.model.Cart;
+import com.sphere.io.glass.model.Order;
 import com.sphere.io.glass.model.Product;
 import com.sphere.io.glass.model.ShippingAdress;
-import com.sphere.io.glass.model.UpdateAction;
+import com.sphere.io.glass.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ public class ConfirmationActivity extends BaseActivity  {
     private Slider mSlider;
     private Slider.Indeterminate mIndeterminate;
     private boolean cartCreated;
+    private boolean orderPurchased;
     private Product mProduct;
 
 
@@ -83,27 +85,43 @@ public class ConfirmationActivity extends BaseActivity  {
             cartCreated = true;
             addItemToCart(cart);
         }else{
-            payOrder();
+            convertCartToOrder(cart);
+        }
+    }
+
+    public void onEvent (Order order){
+        if(!orderPurchased) {
+            payOrder(order);
+        }else{
+            //TODO
+
         }
     }
 
     private void addItemToCart(Cart cart){
-        UpdateAction updateAction = new UpdateAction();
+        ActionsWrapper updateAction = new ActionsWrapper();
         updateAction.setVersion(cart.getVersion());
         final LineItem addProduct = new LineItem();
         addProduct.setQuantity(1);
         addProduct.setVariantId(1);
         addProduct.setProductId(mProduct.getProductID());
-        addProduct.setAction("addLineItem");
+        addProduct.setAction(Constants.ACTION_ADD_LINE_ITEM);
         final ShippingAdress addShipingAdress = new ShippingAdress();
-        addShipingAdress.setAction("setShippingAddress");
-        addShipingAdress.setFirstName("dummy");
-        updateAction.setActions(new ArrayList<Action>(){{add(addProduct);add(addShipingAdress);}});
+        addShipingAdress.setAction(Constants.ACTION_SET_SHIPPING_ADDRESS);
+
+        updateAction.setActions(new ArrayList<Action>() {{
+            add(addProduct);
+            add(addShipingAdress);
+        }});
         SphereApiCaller.getInstance(this).addItemToCart(cart.getId(),updateAction);
     }
 
-    private void payOrder(){
+    private void convertCartToOrder(Cart cart){
+        SphereApiCaller.getInstance(this).createOrderFromCart(cart.getId(),cart.getVersion());
+    }
 
+    private void payOrder(Order order){
+        //SphereApiCaller.getInstance(this).updateOrder(order.g);
     }
 
     private void displaySlider() {

@@ -5,12 +5,24 @@ package com.sphere.io.glass.utils;
  */
 public class Constants {
 
+    //CURRENCY CONSTANTS
+    public static final String KEY_CURRENCY = "EUR";
+
+
     //NAVIGATION CONSTANTS
     public static final int NAVIGATION_QRCODE = 0x00;
     public static final int NAVIGATION_CART = 0x01;
 
     //CONSTANTS
     public static final String KEY_SKU = "keySku";
+
+    //COUNTRY CONSTANTS
+    public static final String COUNTRY_CODE="ES";
+
+    //ACTION CONSTANTS
+    public static final String ACTION_ADD_LINE_ITEM="addLineItem";
+    public static final String ACTION_SET_SHIPPING_ADDRESS="setShippingAddress";
+
 
 
 }
