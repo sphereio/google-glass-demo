@@ -36,7 +36,7 @@ public interface SphereService {
     void createCart(@Body Currency currency, Callback<Cart> cart) throws RetrofitError;
 
     @POST("/google-glass-demo/carts/{cartId}")
-    void addItemToCart(@Path("cartId") String cartId, @Body ActionsWrapper updateAction, Callback<Cart> cart) throws RetrofitError;
+    void addItemToCart(@Path("cartId") String cartId, @Body ActionsWrapper actionsWrapper, Callback<Cart> cart) throws RetrofitError;
 
     @POST("/google-glass-demo/orders")
     void createOrderFromCart(@Body Cart cart, Callback<Order> order)throws RetrofitError;

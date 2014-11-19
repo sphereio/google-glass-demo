@@ -1,5 +1,6 @@
 package com.sphere.io.glass.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import com.sphere.io.glass.model.ActionsWrapper;
 import com.sphere.io.glass.model.LineItem;
 import com.sphere.io.glass.model.Cart;
 import com.sphere.io.glass.model.Order;
+import com.sphere.io.glass.model.Payment;
 import com.sphere.io.glass.model.Product;
 import com.sphere.io.glass.model.ShippingAdress;
 import com.sphere.io.glass.utils.Constants;
@@ -39,6 +41,7 @@ public class ConfirmationActivity extends BaseActivity  {
     private boolean cartCreated;
     private boolean orderPurchased;
     private Product mProduct;
+    private ArrayList<CardBuilder> cards;
 
 
     @Override
@@ -99,9 +102,17 @@ public class ConfirmationActivity extends BaseActivity  {
 
     public void onEvent (Order order){
         if(!orderPurchased) {
+            orderPurchased = true;
             payOrder(order);
         }else{
-            //TODO
+                displaySlider();
+            cards.clear();
+            cards.add(INDETERMINATE, new CardBuilder(this, CardBuilder.Layout.MENU)
+                    .setText(getResources().getString(R.string.action_open_browser)));
+            mCardScroller.getAdapter().notifyDataSetChanged();
+            ActivityKiller activityKiller = new ActivityKiller();
+            activityKiller.start();
+            mCardScroller.deactivate();
 
         }
     }
@@ -128,7 +139,14 @@ public class ConfirmationActivity extends BaseActivity  {
     }
 
     private void payOrder(Order order){
-        //SphereApiCaller.getInstance(this).updateOrder(order.g);
+        ActionsWrapper actionsWrapper = new ActionsWrapper();
+        actionsWrapper.setVersion(order.getVersion());
+        final Payment payment = new Payment();
+        payment.setAction(Constants.ACTION_ORDER_PAYMENT);
+        actionsWrapper.setActions(new ArrayList<Action>() {{
+            add(payment);
+        }});
+        SphereApiCaller.getInstance(this).updateOrder(order.getId(),actionsWrapper);
     }
 
     private void displaySlider() {
@@ -148,10 +166,20 @@ public class ConfirmationActivity extends BaseActivity  {
     }
 
     private List<CardBuilder> createCards(Context context) {
-        ArrayList<CardBuilder> cards = new ArrayList<CardBuilder>();
-
+        cards = new ArrayList<CardBuilder>();
         cards.add(INDETERMINATE, new CardBuilder(context, CardBuilder.Layout.MENU)
                 .setText(getResources().getString(R.string.progress_confirm)));
         return cards;
+    }
+
+    private class ActivityKiller extends Thread{
+
+        public void run(){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+            }
+            ConfirmationActivity.this.finish();
+        }
     }
 }

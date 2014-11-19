@@ -23,6 +23,12 @@ public class Constants {
     //ACTION CONSTANTS
     public static final String ACTION_ADD_LINE_ITEM="addLineItem";
     public static final String ACTION_SET_SHIPPING_ADDRESS="setShippingAddress";
+    public static final String ACTION_ORDER_PAYMENT="changePaymentState";
+
+    //PAYMENT CONSTANTS
+    public static final String VALUE_ORDER_PAID="Paid";
+
+
 
 
 
