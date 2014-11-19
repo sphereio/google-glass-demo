@@ -37,6 +37,7 @@ public class ProductActivity extends BaseActivity {
     private GestureDetector mGestureDetector;
     private final static String TAG = ProductActivity.class.getName();
     private Slider.Indeterminate mSlider;
+    private Product mProduct;
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -59,22 +60,22 @@ public class ProductActivity extends BaseActivity {
 
     public void onEvent(ProductResponseWrapper productResponseWrapper){
         Log.e(TAG, productResponseWrapper.getProducts().get(0).getProductID());
-        populateCard(productResponseWrapper);
+        mProduct = productResponseWrapper.getProducts().get(0);
+        populateCard();
         mSlider.hide();
     }
 
-    private void  populateCard(ProductResponseWrapper productResponseWrapper) {
+    private void  populateCard() {
         View view = getLayoutInflater().inflate(R.layout.product_layout, null);
         setContentView(view);
-        Product product = productResponseWrapper.getProducts().get(0);
         ImageView mImageIv = (ImageView)view.findViewById(R.id.product_layout_iv_item);
         TextView mNameTv = (TextView)view.findViewById(R.id.product_layout_tv_name);
         TextView mdescriptionTv = (TextView)view.findViewById(R.id.product_layout_tv_desc);
         TextView mPriceTv = (TextView)view.findViewById(R.id.product_layout_tv_price);
-        mNameTv.setText(product.getName().getName());
-        mdescriptionTv.setText(product.getDescription().getText());
-        mPriceTv.setText(getString(R.string.product_price, product.getMasterVariant().getPrices().get(0).getAmount()));
-        Picasso.with(this).load(product.getMasterVariant().getImages().get(0).getImageURL()).into(mImageIv);
+        mNameTv.setText(mProduct.getName().getName());
+        mdescriptionTv.setText(mProduct.getDescription().getText());
+        mPriceTv.setText(getString(R.string.product_price, mProduct.getMasterVariant().getPrices().get(0).getAmount()));
+        Picasso.with(this).load(mProduct.getMasterVariant().getImages().get(0).getImageURL()).into(mImageIv);
     }
 
     private String recoverData(){
@@ -110,7 +111,7 @@ public class ProductActivity extends BaseActivity {
 
     private void displayConfirmationCard(){
         Intent i = new Intent(this, ConfirmationActivity.class);
-        //i.putExtra(Constants.KEY_SKU,rawResult.toString());
+        i.putExtra(Constants.KEY_PRODUCT,mProduct);
         startActivity(i);
         finish();
     }

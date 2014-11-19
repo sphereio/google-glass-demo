@@ -2,12 +2,13 @@ package com.sphere.io.glass.model.product.submodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Francisco Villalba on 11/11/14.
  */
-public class MasterVariant {
+public class MasterVariant implements Serializable {
 
     private ArrayList<Image> images;
 
@@ -28,4 +29,6 @@ public class MasterVariant {
     public void setPrices(ArrayList<Value> prices) {
         this.prices = prices;
     }
+
+
 }

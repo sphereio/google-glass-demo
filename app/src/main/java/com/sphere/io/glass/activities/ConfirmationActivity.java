@@ -2,6 +2,7 @@ package com.sphere.io.glass.activities;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -30,7 +31,7 @@ import java.util.List;
  * Created by Francisco Villalba on 4/11/14.
  */
 public class ConfirmationActivity extends BaseActivity  {
-
+    private static final String TAG = ConfirmationActivity.class.getName();
     private static final int INDETERMINATE = 0;
     private CardScrollView mCardScroller;
     private Slider mSlider;
@@ -61,6 +62,13 @@ public class ConfirmationActivity extends BaseActivity  {
                 return true;
             }
         });
+        recoverData();
+    }
+
+    private void recoverData(){
+        Log.e(TAG, "data revoery");
+            Bundle extras = getIntent().getExtras();
+                mProduct = (Product)extras.getSerializable(Constants.KEY_PRODUCT);
     }
 
     @Override
@@ -108,7 +116,6 @@ public class ConfirmationActivity extends BaseActivity  {
         addProduct.setAction(Constants.ACTION_ADD_LINE_ITEM);
         final ShippingAdress addShipingAdress = new ShippingAdress();
         addShipingAdress.setAction(Constants.ACTION_SET_SHIPPING_ADDRESS);
-
         updateAction.setActions(new ArrayList<Action>() {{
             add(addProduct);
             add(addShipingAdress);
@@ -117,7 +124,7 @@ public class ConfirmationActivity extends BaseActivity  {
     }
 
     private void convertCartToOrder(Cart cart){
-        SphereApiCaller.getInstance(this).createOrderFromCart(cart.getId(),cart.getVersion());
+        SphereApiCaller.getInstance(this).createOrderFromCart(cart);
     }
 
     private void payOrder(Order order){

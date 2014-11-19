@@ -2,10 +2,12 @@ package com.sphere.io.glass.model.product.submodels;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by Francisco Villalba on 11/11/14.
  */
-public class Value {
+public class Value implements Serializable {
 
     @SerializedName("currencyCode")
     private String code;
@@ -20,4 +22,6 @@ public class Value {
     public void setAmount(float amount) {
         this.amount = amount;
     }
+
+
 }

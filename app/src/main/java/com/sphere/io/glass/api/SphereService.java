@@ -35,15 +35,12 @@ public interface SphereService {
     @POST("/google-glass-demo/carts")
     void createCart(@Body Currency currency, Callback<Cart> cart) throws RetrofitError;
 
-    @FormUrlEncoded
     @POST("/google-glass-demo/carts/{cartId}")
     void addItemToCart(@Path("cartId") String cartId, @Body ActionsWrapper updateAction, Callback<Cart> cart) throws RetrofitError;
 
-    @FormUrlEncoded
     @POST("/google-glass-demo/orders")
-    void createOrderFromCart(@Field("id") String cartId,@Field("version") int version, Callback<Order> order)throws RetrofitError;
+    void createOrderFromCart(@Body Cart cart, Callback<Order> order)throws RetrofitError;
 
-    @FormUrlEncoded
     @POST("/google-glass-demo/orders/{orderId}")
     void updateOrder(@Path("orderId") String orderId, @Body ActionsWrapper actionsWrapper, Callback<Order> order)throws RetrofitError;
 

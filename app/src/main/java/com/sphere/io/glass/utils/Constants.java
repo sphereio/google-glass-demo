@@ -15,9 +15,10 @@ public class Constants {
 
     //CONSTANTS
     public static final String KEY_SKU = "keySku";
+    public static final String KEY_PRODUCT = "keyProduct";
 
     //COUNTRY CONSTANTS
-    public static final String COUNTRY_CODE="ES";
+    public static final String COUNTRY_CODE="DE";
 
     //ACTION CONSTANTS
     public static final String ACTION_ADD_LINE_ITEM="addLineItem";

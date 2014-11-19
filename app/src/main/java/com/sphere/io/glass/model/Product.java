@@ -5,10 +5,12 @@ import com.sphere.io.glass.model.product.submodels.Description;
 import com.sphere.io.glass.model.product.submodels.MasterVariant;
 import com.sphere.io.glass.model.product.submodels.Name;
 
+import java.io.Serializable;
+
 /**
  * Created by Francisco Villalba on 11/11/14.
  */
-public class Product {
+public class Product implements Serializable {
 
     @SerializedName("id")
     private String productID;
@@ -49,4 +51,6 @@ public class Product {
     public void setDescription(Description description) {
         this.description = description;
     }
+
+
 }

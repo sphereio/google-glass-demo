@@ -1,19 +1,31 @@
 package com.sphere.io.glass.model;
 
+import com.sphere.io.glass.utils.Constants;
+
 /**
  * Created by Francisco Villalba on 17/11/14.
  */
 public class Address {
 
-    public String getFirstName() {
-        return firstName;
+    private String country = Constants.COUNTRY_CODE;
+    private String state = Constants.COUNTRY_CODE;
+
+    public String getCountry() {
+        return country;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    private String firstName;
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
 
     /**
      * id - String - Optional
