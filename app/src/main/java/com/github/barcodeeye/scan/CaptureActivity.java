@@ -34,7 +34,6 @@ import com.github.barcodeeye.migrated.AmbientLightManager;
 import com.github.barcodeeye.migrated.BeepManager;
 import com.github.barcodeeye.migrated.FinishListener;
 import com.github.barcodeeye.migrated.InactivityTimer;
-import com.github.barcodeeye.scan.api.CardPresenter;
 import com.github.barcodeeye.scan.result.ResultProcessor;
 import com.github.barcodeeye.scan.result.ResultProcessorFactory;
 import com.github.barcodeeye.scan.ui.ViewfinderView;

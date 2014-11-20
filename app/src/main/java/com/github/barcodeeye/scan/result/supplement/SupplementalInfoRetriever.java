@@ -16,11 +16,6 @@
 
 package com.github.barcodeeye.scan.result.supplement;
 
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collection;
-
 import android.content.Context;
 import android.os.AsyncTask;
 import android.text.Spannable;
@@ -35,6 +30,11 @@ import com.google.zxing.client.result.ISBNParsedResult;
 import com.google.zxing.client.result.ParsedResult;
 import com.google.zxing.client.result.ProductParsedResult;
 import com.google.zxing.client.result.URIParsedResult;
+
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public abstract class SupplementalInfoRetriever extends AsyncTask<Object,Object,Object> {
 

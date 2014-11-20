@@ -1,21 +1,14 @@
 package com.sphere.io.glass.activities;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.RemoteViews;
 import android.widget.TextView;
 
-import com.github.barcodeeye.scan.CaptureActivity;
-import com.google.android.glass.app.Card;
-import com.google.android.glass.timeline.LiveCard;
 import com.google.android.glass.touchpad.Gesture;
 import com.google.android.glass.touchpad.GestureDetector;
 import com.google.android.glass.widget.CardBuilder;
@@ -26,8 +19,6 @@ import com.sphere.io.glass.model.Product;
 import com.sphere.io.glass.model.ProductResponseWrapper;
 import com.sphere.io.glass.utils.Constants;
 import com.squareup.picasso.Picasso;
-
-import de.greenrobot.event.EventBus;
 
 /**
  * Created by Francisco Villalba on 6/11/14.
@@ -41,7 +32,7 @@ public class ProductActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        Log.e(TAG,"CREATED");
+        Log.e(TAG, "CREATED");
         buildView();
         createGestureDetector();
     }
@@ -111,7 +102,7 @@ public class ProductActivity extends BaseActivity {
 
     private void displayConfirmationCard(){
         Intent i = new Intent(this, ConfirmationActivity.class);
-        i.putExtra(Constants.KEY_PRODUCT,mProduct);
+        i.putExtra(Constants.KEY_PRODUCT, mProduct);
         startActivity(i);
         finish();
     }

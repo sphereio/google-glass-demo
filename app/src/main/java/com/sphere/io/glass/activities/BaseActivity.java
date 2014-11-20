@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.glass.widget.CardBuilder;
-
 import de.greenrobot.event.EventBus;
 import retrofit.RetrofitError;
 
@@ -27,8 +25,8 @@ public class BaseActivity extends Activity {
         super.onDestroy();
     }
 
-    public void onEvent(RetrofitError retrofitError){
-        startActivity(new Intent(this,AlertActivity.class));
+    public void onEvent(RetrofitError retrofitError) {
+        startActivity(new Intent(this, AlertActivity.class));
     }
 
 }

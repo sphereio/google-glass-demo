@@ -1,7 +1,5 @@
 package com.sphere.io.glass.model.product.submodels;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 

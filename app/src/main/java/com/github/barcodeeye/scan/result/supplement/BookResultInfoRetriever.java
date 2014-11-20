@@ -16,21 +16,21 @@
 
 package com.github.barcodeeye.scan.result.supplement;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONTokener;
-
 import android.content.Context;
 import android.widget.TextView;
 
 import com.github.barcodeeye.migrated.HttpHelper;
 import com.github.barcodeeye.migrated.LocaleManager;
 import com.sphere.io.glass.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @author Kamil Kaczmarczyk

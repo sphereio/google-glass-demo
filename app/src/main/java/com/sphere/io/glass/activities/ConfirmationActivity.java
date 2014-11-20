@@ -1,9 +1,7 @@
 package com.sphere.io.glass.activities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.DragEvent;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -18,8 +16,8 @@ import com.sphere.io.glass.api.SphereApiCaller;
 import com.sphere.io.glass.card.CardAdapter;
 import com.sphere.io.glass.model.Action;
 import com.sphere.io.glass.model.ActionsWrapper;
-import com.sphere.io.glass.model.LineItem;
 import com.sphere.io.glass.model.Cart;
+import com.sphere.io.glass.model.LineItem;
 import com.sphere.io.glass.model.Order;
 import com.sphere.io.glass.model.Payment;
 import com.sphere.io.glass.model.Product;
@@ -33,7 +31,6 @@ import java.util.List;
  * Created by Francisco Villalba on 4/11/14.
  */
 public class ConfirmationActivity extends BaseActivity  {
-    private static final String TAG = ConfirmationActivity.class.getName();
     private static final int INDETERMINATE = 0;
     private CardScrollView mCardScroller;
     private Slider mSlider;
@@ -47,7 +44,6 @@ public class ConfirmationActivity extends BaseActivity  {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        // Ensure screen stays on during demo.
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         mCardScroller = new CardScrollView(this);
         mCardScroller.setAdapter(new CardAdapter(createCards(this)));
@@ -69,7 +65,6 @@ public class ConfirmationActivity extends BaseActivity  {
     }
 
     private void recoverData(){
-        Log.e(TAG, "data revoery");
             Bundle extras = getIntent().getExtras();
                 mProduct = (Product)extras.getSerializable(Constants.KEY_PRODUCT);
     }
@@ -108,12 +103,11 @@ public class ConfirmationActivity extends BaseActivity  {
                 displaySlider();
             cards.clear();
             cards.add(INDETERMINATE, new CardBuilder(this, CardBuilder.Layout.MENU)
-                    .setText(getResources().getString(R.string.action_open_browser)));
+                    .setText(getResources().getString(R.string.purchase_completed)));
             mCardScroller.getAdapter().notifyDataSetChanged();
             ActivityKiller activityKiller = new ActivityKiller();
             activityKiller.start();
             mCardScroller.deactivate();
-
         }
     }
 
@@ -168,7 +162,7 @@ public class ConfirmationActivity extends BaseActivity  {
     private List<CardBuilder> createCards(Context context) {
         cards = new ArrayList<CardBuilder>();
         cards.add(INDETERMINATE, new CardBuilder(context, CardBuilder.Layout.MENU)
-                .setText(getResources().getString(R.string.progress_confirm)));
+                .setText(getResources().getString(R.string.purchase_progress)));
         return cards;
     }
 

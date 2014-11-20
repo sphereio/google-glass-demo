@@ -2,8 +2,6 @@ package com.sphere.io.glass.model;
 
 import com.sphere.io.glass.utils.Constants;
 
-import java.util.zip.CheckedOutputStream;
-
 /**
  * Created by Francisco Villalba on 19/11/14.
  */

@@ -1,8 +1,6 @@
 
 package com.sphere.io.glass.model;
 
-import com.sphere.io.glass.utils.Constants;
-
 /**
  * Created by Francisco Villalba on 17/11/14.
  */

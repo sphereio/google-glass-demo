@@ -1,5 +1,9 @@
 package com.sphere.io.glass;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.WindowManager;
+
 import com.github.barcodeeye.scan.CaptureActivity;
 import com.google.android.glass.widget.CardBuilder;
 import com.google.android.glass.widget.CardScrollView;
@@ -10,15 +14,8 @@ import com.sphere.io.glass.card.CardAdapter;
 import com.sphere.io.glass.model.Session;
 import com.sphere.io.glass.utils.SpherePreferenceManager;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.WindowManager;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import de.greenrobot.event.EventBus;
 
 public class SphereMainActivity extends BaseActivity {
     private static final int NAVIGATION_QRCODE = 0;

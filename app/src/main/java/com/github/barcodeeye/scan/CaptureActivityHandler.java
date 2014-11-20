@@ -13,9 +13,6 @@
 
 package com.github.barcodeeye.scan;
 
-import java.util.Collection;
-import java.util.Map;
-
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -36,6 +33,9 @@ import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
 import com.google.zxing.client.android.camera.CameraManager;
 import com.sphere.io.glass.R;
+
+import java.util.Collection;
+import java.util.Map;
 
 /**
  * This class handles all the messaging which comprises the state machine for
