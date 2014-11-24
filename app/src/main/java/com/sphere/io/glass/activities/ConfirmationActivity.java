@@ -46,6 +46,7 @@ public class ConfirmationActivity extends BaseActivity  {
         super.onCreate(bundle);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         mCardScroller = new CardScrollView(this);
+        mCardScroller.setFocusable(false);
         mCardScroller.setAdapter(new CardAdapter(createCards(this)));
         setContentView(mCardScroller);
         mSlider = Slider.from(mCardScroller);

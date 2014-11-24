@@ -38,7 +38,6 @@ public class ProductActivity extends BaseActivity {
     }
     private void buildView() {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
     }
 
     @Override
@@ -50,10 +49,16 @@ public class ProductActivity extends BaseActivity {
     }
 
     public void onEvent(ProductResponseWrapper productResponseWrapper){
-        Log.e(TAG, productResponseWrapper.getProducts().get(0).getProductID());
-        mProduct = productResponseWrapper.getProducts().get(0);
-        populateCard();
-        mSlider.hide();
+        if (productResponseWrapper.getProducts().isEmpty()){
+            Intent i = new Intent(this, AlertActivity.class);
+            i.putExtra(Constants.ERROR_PRODUCT, true);
+            startActivity(i);
+            finish();
+        }else{
+            mProduct = productResponseWrapper.getProducts().get(0);
+            populateCard();
+            mSlider.hide();
+        }
     }
 
     private void  populateCard() {

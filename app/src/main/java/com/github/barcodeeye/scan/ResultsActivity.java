@@ -73,8 +73,8 @@ public class ResultsActivity extends Activity {
 
     private void readExtras(Bundle extras) {
         Parcelable[] parcelCardsArray = extras.getParcelableArray(EXTRA_CARDS);
-        for (int i = 0; i < parcelCardsArray.length; i++) {
-            mCardPresenters.add((CardPresenter) parcelCardsArray[i]);
+        for (Parcelable parcelable: parcelCardsArray) {
+            mCardPresenters.add((CardPresenter) parcelable);
         }
     }
 

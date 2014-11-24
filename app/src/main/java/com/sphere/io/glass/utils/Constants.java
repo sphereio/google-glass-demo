@@ -28,6 +28,11 @@ public class Constants {
     //PAYMENT CONSTANTS
     public static final String VALUE_ORDER_PAID="Paid";
 
+    //ERROR CONSTANTS
+    public static final String ERROR_CONNECTION="errorConnection";
+    public static final String ERROR_PRODUCT="errorProduct";
+
+
 
 
 

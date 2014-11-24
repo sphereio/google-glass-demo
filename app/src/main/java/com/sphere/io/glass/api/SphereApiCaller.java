@@ -69,7 +69,7 @@ public class SphereApiCaller {
                     @Override
                     public void intercept(RequestFacade request) {
                         Session authSession = SpherePreferenceManager.getInstance(context).getSession();
-                        request.addHeader(KEY_AUTHORIZATION, new StringBuffer(AUTHORIZATION_BEARER)
+                        request.addHeader(KEY_AUTHORIZATION, new StringBuilder(AUTHORIZATION_BEARER)
                                 .append(authSession.getToken()).toString());
 
                     }

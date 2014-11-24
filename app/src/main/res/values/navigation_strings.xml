@@ -7,5 +7,7 @@
     <string name="taps_to_buy">Long press to buy</string>
     <string name="purchase_progress">Purchase in progress...</string>
     <string name="purchase_completed">Purchase completed!</string>
-    <string name="alert_text">Connecetion error has ocurred</string>
+    <string name="alert_text_connection">Connection error has ocurred</string>
+    <string name="alert_text_product">Product not found</string>
+    <string name="alert_text_footnote">Swipe down to close</string>
 </resources>
