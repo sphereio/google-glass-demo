@@ -23,7 +23,9 @@ public class AlertActivity extends Activity {
 
     private void recoverData(){
         Bundle extras = getIntent().getExtras();
-        isProductError = extras.getBoolean(Constants.ERROR_PRODUCT,false);
+        if (extras!= null) {
+            isProductError = extras.getBoolean(Constants.ERROR_PRODUCT, false);
+        }
     }
 
     private void buildView() {

@@ -57,6 +57,7 @@ public class ProductActivity extends BaseActivity {
         }else{
             mProduct = productResponseWrapper.getProducts().get(0);
             populateCard();
+            Log.e(TAG,mProduct.toString());
             mSlider.hide();
         }
     }
@@ -70,7 +71,7 @@ public class ProductActivity extends BaseActivity {
         TextView mPriceTv = (TextView)view.findViewById(R.id.product_layout_tv_price);
         mNameTv.setText(mProduct.getName().getName());
         mdescriptionTv.setText(mProduct.getDescription().getText());
-        mPriceTv.setText(getString(R.string.product_price, mProduct.getMasterVariant().getPrices().get(0).getAmount()));
+        mPriceTv.setText( getString(R.string.product_price,mProduct.getMasterVariant().getPrices().get(0).getValue().getAmount()/100));
         Picasso.with(this).load(mProduct.getMasterVariant().getImages().get(0).getImageURL()).into(mImageIv);
     }
 

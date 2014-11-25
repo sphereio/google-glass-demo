@@ -28,5 +28,11 @@ public class MasterVariant implements Serializable {
         this.prices = prices;
     }
 
-
+    @Override
+    public String toString() {
+        return "MasterVariant{" +
+                "images=" + images +
+                ", prices=" + prices +
+                '}';
+    }
 }
