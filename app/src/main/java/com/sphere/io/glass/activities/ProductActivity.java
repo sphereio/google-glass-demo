@@ -20,6 +20,7 @@ import com.sphere.io.glass.model.ProductResponseWrapper;
 import com.sphere.io.glass.utils.Constants;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 /**
@@ -73,7 +74,8 @@ public class ProductActivity extends BaseActivity {
         TextView mPriceTv = (TextView)view.findViewById(R.id.product_layout_tv_price);
         mNameTv.setText(mProduct.getName().getName());
         mdescriptionTv.setText(mProduct.getDescription().getText());
-        mPriceTv.setText(String.format(Locale.GERMANY,getString(R.string.product_price,mProduct.getMasterVariant().getPrices().get(0).getValue().getAmount()/100)));
+        mPriceTv.setText( getString(R.string.product_price,String.format(Locale.FRANCE,"%.2f",
+                mProduct.getMasterVariant().getPrices().get(0).getValue().getAmount()/100)));
         Picasso.with(this).load(mProduct.getMasterVariant().getImages().get(0).getImageURL()).into(mImageIv);
     }
 
