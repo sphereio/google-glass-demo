@@ -46,19 +46,14 @@
         <TextView
             android:id="@+id/product_layout_tv_desc"
             android:layout_width="match_parent"
-            android:maxLines="6"
-            android:lines="6"
+            android:maxLines="5"
+            android:lines="5"
             android:textSize="18dp"
             android:ellipsize="end"
             android:layout_below="@+id/product_layout_tv_price"
             android:layout_height="wrap_content"
         />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:textSize="15dp"
-            android:text="@string/taps_to_buy"/>
+
     </RelativeLayout>
 </RelativeLayout>

@@ -3,6 +3,8 @@ package com.sphere.io.glass.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 import com.google.android.glass.touchpad.Gesture;
 import com.google.android.glass.touchpad.GestureDetector;
+import com.google.android.glass.view.WindowUtils;
 import com.google.android.glass.widget.CardBuilder;
 import com.google.android.glass.widget.Slider;
 import com.sphere.io.glass.R;
@@ -28,7 +31,6 @@ import java.util.Locale;
  */
 public class ProductActivity extends BaseActivity {
 
-    private GestureDetector mGestureDetector;
     private final static String TAG = ProductActivity.class.getName();
     private Slider.Indeterminate mSlider;
     private Product mProduct;
@@ -37,10 +39,43 @@ public class ProductActivity extends BaseActivity {
         super.onCreate(bundle);
         Log.e(TAG, "CREATED");
         buildView();
-        createGestureDetector();
     }
     private void buildView() {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().requestFeature(WindowUtils.FEATURE_VOICE_COMMANDS);
+    }
+
+    @Override
+    public boolean onCreatePanelMenu(int featureId, Menu menu) {
+        if (featureId == WindowUtils.FEATURE_VOICE_COMMANDS) {
+            getMenuInflater().inflate(R.menu.product, menu);
+            return true;
+        }
+        return super.onCreatePanelMenu(featureId, menu);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.product, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        if (featureId == WindowUtils.FEATURE_VOICE_COMMANDS) {
+            switch (item.getItemId()) {
+                case R.id.prod_nav_buy:
+                    displayConfirmationCard();
+                    break;
+                case R.id.prod_nav_scan:
+                    finish();
+                    break;
+                default:
+                    return true;
+            }
+            return true;
+        }
+        return super.onMenuItemSelected(featureId, item);
     }
 
     @Override
@@ -86,28 +121,6 @@ public class ProductActivity extends BaseActivity {
              text = extras.getString(Constants.KEY_SKU);
         }
         return text;
-    }
-
-    private void createGestureDetector() {
-        mGestureDetector = new GestureDetector(this);
-        mGestureDetector.setBaseListener(new GestureDetector.BaseListener() {
-            @Override
-            public boolean onGesture(Gesture gesture) {
-                if (gesture == Gesture.LONG_PRESS) {
-                    displayConfirmationCard();
-                    return true;
-                }
-                return false;
-            }
-        });
-    }
-
-    @Override
-    public boolean onGenericMotionEvent(MotionEvent event) {
-        if (mGestureDetector != null) {
-            return mGestureDetector.onMotionEvent(event);
-        }
-        return false;
     }
 
     private void displayConfirmationCard(){
