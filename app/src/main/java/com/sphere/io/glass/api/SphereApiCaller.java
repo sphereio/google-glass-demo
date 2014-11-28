@@ -25,10 +25,11 @@ public class SphereApiCaller {
     private static RestAdapter mRestAdapter;
     private static SphereApiCaller mSphereApiCaller;
     //KNOWLEDGE PURPOSES
-    private static final String CLIENT_ID = "654GYqPJccG9X3KCrKImwLyO";
-    private static final String CLIENT_SECRET = "bAS3tW-PfDpNbxlqSIiUJ7H-XDOo6BIN";
+    //MODIFIED ON GITHUB PLEASE FILL EMPTY STRINGS TO TEST APP
+    private static final String CLIENT_ID = "";
+    private static final String CLIENT_SECRET = "";
     private static final String KEY_AUTHORIZATION = "Authorization";
-    private static final String AUTHORIZATION = "Basic NjU0R1lxUEpjY0c5WDNLQ3JLSW13THlPOmJBUzN0Vy1QZkRwTmJ4bHFTSWlVSjdILVhET282QklO";
+    private static final String AUTHORIZATION = "";
     private static final String AUTHORIZATION_BEARER = "Bearer ";
     private static final String GRANT_TYPE = "client_credentials";
     private static final String SCOPE = "manage_project:google-glass-demo";
