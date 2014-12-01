@@ -16,16 +16,16 @@
 
 package com.github.barcodeeye.scan.result.supplement;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import android.content.Context;
 import android.widget.TextView;
 
 import com.github.barcodeeye.migrated.HttpHelper;
 import com.google.zxing.client.result.URIParsedResult;
 import com.sphere.io.glass.R;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 final class URIResultInfoRetriever extends SupplementalInfoRetriever {
 

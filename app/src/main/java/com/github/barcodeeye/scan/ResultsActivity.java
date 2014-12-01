@@ -1,8 +1,5 @@
 package com.github.barcodeeye.scan;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.app.PendingIntent.CanceledException;
@@ -19,6 +16,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.github.barcodeeye.scan.api.CardPresenter;
 import com.google.android.glass.widget.CardScrollAdapter;
 import com.google.android.glass.widget.CardScrollView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ResultsActivity extends Activity {
 
@@ -73,8 +73,8 @@ public class ResultsActivity extends Activity {
 
     private void readExtras(Bundle extras) {
         Parcelable[] parcelCardsArray = extras.getParcelableArray(EXTRA_CARDS);
-        for (int i = 0; i < parcelCardsArray.length; i++) {
-            mCardPresenters.add((CardPresenter) parcelCardsArray[i]);
+        for (Parcelable parcelable: parcelCardsArray) {
+            mCardPresenters.add((CardPresenter) parcelable);
         }
     }
 

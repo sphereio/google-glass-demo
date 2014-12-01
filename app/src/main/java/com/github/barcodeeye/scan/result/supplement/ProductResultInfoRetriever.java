@@ -16,11 +16,6 @@
 
 package com.github.barcodeeye.scan.result.supplement;
 
-import java.io.IOException;
-import java.net.URLEncoder;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.content.Context;
 import android.text.Html;
 import android.widget.TextView;
@@ -28,6 +23,11 @@ import android.widget.TextView;
 import com.github.barcodeeye.migrated.HttpHelper;
 import com.github.barcodeeye.migrated.LocaleManager;
 import com.sphere.io.glass.R;
+
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * <p>Retrieves product information from Google Product search.</p>

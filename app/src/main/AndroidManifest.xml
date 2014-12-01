@@ -22,12 +22,17 @@
                 android:resource="@xml/voice_trigger" />
         </activity>
         <activity
-            android:name=".activities.LoadingActivity"
+            android:name=".activities.ConfirmationActivity"
             android:icon="@drawable/icon_logo_thumb"
        >
         </activity>
         <activity
             android:name=".activities.ProductActivity"
+            android:icon="@drawable/icon_logo_thumb"
+            >
+        </activity>
+        <activity
+            android:name=".activities.AlertActivity"
             android:icon="@drawable/icon_logo_thumb"
             >
         </activity>

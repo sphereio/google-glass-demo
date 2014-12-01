@@ -1,7 +1,5 @@
 package com.github.barcodeeye.scan.result;
 
-import java.util.List;
-
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +8,8 @@ import android.net.Uri;
 import com.github.barcodeeye.scan.api.CardPresenter;
 import com.google.zxing.Result;
 import com.google.zxing.client.result.ParsedResult;
+
+import java.util.List;
 
 /**
  * @author javier.romero

@@ -13,9 +13,6 @@
 
 package com.github.barcodeeye.scan.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -29,6 +26,9 @@ import com.google.zxing.ResultPoint;
 import com.google.zxing.ResultPointCallback;
 import com.google.zxing.client.android.camera.CameraManager;
 import com.sphere.io.glass.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This view is overlaid on top of the camera preview. It adds the viewfinder

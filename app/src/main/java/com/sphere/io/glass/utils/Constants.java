@@ -1,11 +1,3 @@
-/*
- * Copyright (c) 2014. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
- * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
- * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
- * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
- * Vestibulum commodo. Ut rhoncus gravida arcu.
- */
-
 package com.sphere.io.glass.utils;
 
 /**
@@ -13,10 +5,36 @@ package com.sphere.io.glass.utils;
  */
 public class Constants {
 
+    //CURRENCY CONSTANTS
+    public static final String KEY_CURRENCY = "EUR";
+
+
     //NAVIGATION CONSTANTS
     public static final int NAVIGATION_QRCODE = 0x00;
     public static final int NAVIGATION_CART = 0x01;
 
     //CONSTANTS
     public static final String KEY_SKU = "keySku";
+    public static final String KEY_PRODUCT = "keyProduct";
+
+    //COUNTRY CONSTANTS
+    public static final String COUNTRY_CODE="DE";
+
+    //ACTION CONSTANTS
+    public static final String ACTION_ADD_LINE_ITEM="addLineItem";
+    public static final String ACTION_SET_SHIPPING_ADDRESS="setShippingAddress";
+    public static final String ACTION_ORDER_PAYMENT="changePaymentState";
+
+    //PAYMENT CONSTANTS
+    public static final String VALUE_ORDER_PAID="Paid";
+
+    //ERROR CONSTANTS
+    public static final String ERROR_CONNECTION="errorConnection";
+    public static final String ERROR_PRODUCT="errorProduct";
+
+
+
+
+
+
 }

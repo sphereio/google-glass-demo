@@ -16,14 +16,14 @@
 
 package com.github.barcodeeye.scan.result.supplement;
 
-import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import android.widget.TextView;
 
 import com.github.barcodeeye.migrated.HttpHelper;
 import com.google.zxing.client.result.URIParsedResult;
+
+import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Retrieves the title of a web page as supplemental info.
