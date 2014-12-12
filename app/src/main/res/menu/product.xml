@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/prod_nav_buy"
+        android:title="@string/product_navigation_buy" />
+    <item
+        android:id="@+id/prod_nav_scan"
+        android:title="@string/product_navigation_scan" />
+</menu>
