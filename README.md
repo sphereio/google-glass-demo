@@ -4,13 +4,6 @@ Google Glass Sphere.io Demo
 
 This sample application allows to buy products managed in sphere.io using a google glass device.
 
-- scan a product QR code (contains product SKU) and see the product details loaded from sphere.io
-- Buy product: Product will be added to the cart and an order is created in sphere.io
-- Scan another product: skip current product and scan another product QR code
-
-This sample inserts a live card to the left of the Glass clock that displays a
-compass. Tapping the live card presents a menu with two options:
-
 ## Getting started
 
 Check out our documentation to learn how to get started on
