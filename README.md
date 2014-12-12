@@ -35,7 +35,7 @@ While reading the code you will see some blinking points on the display. Once th
 
 ![Alt text](/resources/6.png?raw=true)
 
-Once the product is gathered from Sphere.io API, the product detail information is displayed on the screen. The first time you load a new product the image retrieval could last a while, but don’t worry, next times, if the same image is needed the load will be faster because it remains cached on the app. From here you have two options, swipe down to close the screen and scan another QR code or long press to buy the product.
+Once the product is gathered from Sphere.io API, the product detail information is displayed on the screen. The first time you load a new product the image retrieval could last a while, but don’t worry, next times, if the same image is needed the load will be faster because it remains cached on the app. Say "Ok Glass" to see the following two options: "Buy product" or "Scan another product".
 
 ![Alt text](/resources/7.png?raw=true)
 
