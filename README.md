@@ -48,6 +48,14 @@ Two kind of errors could be displayed while using the app. The first one is a co
 
 ## Development
 
+### Build App
+
+```bash
+gradle build
+```
+
+The resulting `apk` packages are located in build folder `app/build/outputs/apk/.
+
 ### Install App on Google Glass device
 
 * download android SDK
