@@ -48,13 +48,17 @@ Two kind of errors could be displayed while using the app. The first one is a co
 
 ## Development
 
-You can use your IDE to compile and install the sample or use
-[`adb`](https://developer.android.com/tools/help/adb.html)
-on the command line:
+### Install App on Google Glass device
 
-```bash
-$ adb install -r SphereGlassesApp.apk
-```
+* download android SDK
+* Configure the Google glasses device to run in "debug" mode. On Glass, go to `Settings` > `Device Info` > `Turn on debug`. Plug the glasses to your computer via USB.
+* install application using [`adb`](https://developer.android.com/tools/help/adb.html) command line tool 
+   
+   ```bash
+   $ adb install -r SphereGlassesApp.apk
+   ```
+
+### Uninstall
 To uninstall the app, use the followong command.
 ```bash
 adb uninstall com.sphere.io.glass
