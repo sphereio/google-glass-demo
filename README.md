@@ -42,9 +42,7 @@ Once the product is gathered from Sphere.io API, the product detail information 
 If you decide to buy the product a loading screen will appear. On this screen some API request will be done: create a cart, add the product to the cart, create order from cart and change order status to paid. Once this requests are answered from the API, the message “Purchase completed” will appear and will remain 1 second on the screen. Then the QR code scan screen will appear again.
 
 ###Error Handling
-Two kind of errors could be displayed while using the app. The first one is a connection error produced by any reason related with connectivity, like a weak wifi connection.
-The other error could happen when reading the QR Code. If the data provided by the code does not match any product on the API, it is not possible to show any information.
-￼In both cases an error screen is shown, it could be closed by swiping down on the glasses device. Automatically the previous screen will be shown.
+Two kind of errors could be displayed while using the app. The first one is a connection error produced by any reason related with connectivity, like a weak wifi connection. The other error could happen when reading the QR Code. If the data provided by the code does not match any product on the API, it is not possible to show any information. In both cases an error screen is shown, it could be closed by swiping down on the glasses device. Automatically the previous screen will be shown.
 
 ![Alt text](/resources/8.png?raw=true)
 
