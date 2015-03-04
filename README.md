@@ -9,6 +9,8 @@ This sample application allows to buy products managed in sphere.io using a goog
 Check out our documentation to learn how to get started on
 https://developers.google.com/glass/gdk/index
 
+Proper QR codes from produt SKUs can be created using generators like this: https://createqrcode.appspot.com/
+
 ## Running the demo on Glass
 
 There are two ways of launching the app. Via touch or using voice commands. From the main menu on the device you will see the following screen
